@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.aoc.cat/eNotum"
+	targetNamespace="http://www.aoc.cat/eNotum"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+
+	<xs:include schemaLocation="Commons.xsd"/>
+
+	<xs:complexType name="PeticioType" abstract="true">
+		<xs:sequence>
+			<xs:element name="Emissor" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

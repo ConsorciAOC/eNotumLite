@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.aoc.cat/eNotum/evidencia"
+	targetNamespace="http://www.aoc.cat/eNotum/evidencia"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+
+	<xs:element name="EvidenciaNotificacio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DadesNotificacio"/>
+				<xs:element ref="Documents"/>
+				<xs:element ref="DadesDestinataris"/>
+				<xs:element name="MotiuEvidencia" type="MotiuEvidenciaType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:simpleType name="MotiuEvidenciaType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DIPOSIT"/>
+			<xs:enumeration value="ACCEPTAR"/>
+			<xs:enumeration value="REBUTJAR"/>
+			<xs:enumeration value="EXPIRAR"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="DadesNotificacio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="IdNotificacio" type="xs:integer"/>
+				<xs:element name="Referencia" type="xs:string"/>
+				<xs:element name="Titol" type="xs:string"/>
+				<xs:element name="TipusObjecte" type="TipusObjecteType"/>
+                <xs:element name="DataCreacio" type="xs:dateTime"/>
+                <xs:element name="DataDiposit" type="xs:dateTime"/>
+                <xs:element name="DataPracticar" type="xs:dateTime" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Documents">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Document" maxOccurs="5">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Nom" type="xs:string"/>
+							<xs:element name="DigestDocument" type="DigestDocumentType"/>
+							<xs:element name="Tipus" type="TipusDocumentType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="DigestDocumentType">
+		<xs:simpleContent>
+			<xs:extension base="xs:base64Binary">
+				<xs:attribute name="digestAlgorithm" type="DigestAlgorithmType"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="TipusDocumentType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Resolució"/>
+			<xs:enumeration value="Annex"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DigestAlgorithmType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SHA-256"/>
+			<xs:enumeration value="SHA-384"/>
+			<xs:enumeration value="SHA-512"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="DadesDestinataris">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Destinatari" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:choice minOccurs="0">
+								<xs:element name="CIF" type="xs:string"/>
+								<xs:element name="VAT" type="xs:string"/>
+							</xs:choice>
+							<xs:choice minOccurs="0">
+								<xs:element name="NIF" type="xs:string"/>
+								<xs:element name="PASSPORT" type="xs:string"/>
+							</xs:choice>
+							<xs:element name="Nom" type="xs:string"/>
+							<xs:element name="PrimerCognom" type="xs:string"/>
+							<xs:element name="SegonCognom" type="xs:string"/>
+							<xs:element name="RaoSocial" type="xs:string"/>
+							<xs:element name="Email" type="xs:string"/>
+							<xs:element name="Telefon" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>    
+
+	<xs:simpleType name="TipusObjecteType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NOTIFICACIO"/>
+			<xs:enumeration value="COMUNICACIO"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
