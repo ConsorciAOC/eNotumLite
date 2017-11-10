@@ -1,7 +1,7 @@
 # eNotumLite
 
 ## Cicle de vida de les notificacions
-[cicle de vida](https://github.com/ConsorciAOC/eNotumLite/blob/master/estats-enotum-lite.png)
+![cicle de vida](https://github.com/ConsorciAOC/eNotumLite/blob/master/estats-enotum-lite.png)
 
 ## Estat de les notificacions
 | Estat | Descripció | Estat previ |
