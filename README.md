@@ -1,7 +1,7 @@
 # eNotumLite
 
 ## Cicle de vida de les notificacions
-//TODO: parlar amb Ramon
+[cicle de vida](https://github.com/ConsorciAOC/eNotumLite/blob/master/estats-enotum-lite.png)
 
 ## Estat de les notificacions
 | Estat | Descripció | Estat previ |
@@ -14,14 +14,11 @@
 | Error | Notificació marcada amb un error, mitjançant el motor d'estats. | - |
 | Descartada | Notificació cancel·lada mitjançant el servei de Cancel·lar Notificació. | - |
 
-## Motor d'estats
-//TODO: parlar amb Ramon
-
 ## Missatgeria
 * [esquemes .xsd](https://github.com/ConsorciAOC/eNotumLite/tree/master/xsds)
 
 ## Modalitats de consum
-//TODO: parlar amb Ramon
+//TODO
 
 ## Codis d'error
 | Codi   | Descripció |
@@ -57,8 +54,7 @@ Exemple d'una resposta d'error:
 ```
 
 ## Callbacks
-//TODO: parlar amb Ramon
-esquemes i fases de la notificació que de l'enviament
+//TODO
 
 ## Plantilles 
 La resolució de plantilles d'e-mail i SMS fa servir el motor Mustache:
