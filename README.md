@@ -10,7 +10,7 @@
 | Dipositada | Notificació dipositada mitjançant el motor d'estats. | Entrada |
 | Acceptada | Notificació practicada amb motiu [ACCEPTAR] mitjançant el servei de Practicar Notificació o durant la consulta si la notificació es de tipus [Comunicació] | Dipositada |
 | Rebutjada | Notificació practicada amb motiu [REBUTJAR] mitjançant el servei de Practicar Notificació. | Dipositada |
-| Expirada | Notificació expirada, a partir de l'atribut [diesExpiracio], mitjançant el motor d'estats. | - |
+| Expirada | Notificació expirada, a partir de l'atribut [diesExpiracio], mitjançant el motor d'estats. | Dipositada |
 | Error | Notificació marcada amb un error, mitjançant el motor d'estats. | - |
 | Descartada | Notificació cancel·lada mitjançant el servei de Cancel·lar Notificació. | - |
 
@@ -40,7 +40,7 @@
 
 ## Resposta d'error
 Exemple d'una resposta d'error:
-```
+```xml
 <procesaResponse xmlns="http://www.openuri.org/" xmlns:ns0="http://gencat.net/scsp/esquemes/peticion">
    <RespostaCrearNotificacio xmlns="http://www.aoc.cat/eNotum">
       <ResultatCrearNotificacio>
@@ -54,7 +54,49 @@ Exemple d'una resposta d'error:
 ```
 
 ## Callbacks
-//TODO
+Els callbacks s'enviaran a l'emissor de les notificacions quan aquestes passin a l'estat Dipositada i quan passin a l'estat Expirada.
+
+L'esquema dels missatges de callback el podeu trobar a la carpeta: * [esquemes .xsd](https://github.com/ConsorciAOC/eNotumLite/tree/master/xsds)
+
+Exemple d'un missatge de callback
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ActualitzarEstat xmlns="http://www.aoc.cat/eNotum">
+	<Emissor>TECSIDEL</Emissor>
+	<ActualitzarEstatNotificacio>
+		<Estat>DIPOSITADA</Estat>
+		<DataDiposit>2017-11-06T07:49:15.735+01:00</DataDiposit>
+		<Diposit>
+			<![CDATA[<EvidenciaNotificacio xmlns="http://www.aoc.cat/eNotum/evidencia" Id="Id17982116381065597461669832853"/>
+				<dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Id="Id1170447762926575964642636045"/>
+				<DadesNotificacio>
+					<IdNotificacio>1</IdNotificacio>
+					<Referencia>TEST-001</Referencia>
+					<Titol>Prova de creacio de notificació</Titol>
+					<TipusObjecte>NOTIFICACIO</TipusObjecte>
+				</DadesNotificacio>
+				<Documents>
+					<Document>
+						<Nom>Resolució.pdf</Nom>
+						<DigestDocument digestAlgorithm="SHA-256">eNSt+MXuXykZl513b8S7aV3xkqxw44eyXd9q5cf3ROM=</DigestDocument>
+						<Tipus>Resolució</Tipus>
+					</Document>
+				</Documents>
+				<DadesDestinataris>
+					<Destinatari>
+						<NIF>12345678A</NIF>
+						<Nom>Jordi</Nom>
+						<PrimerCognom>CATALA</PrimerCognom>
+						<SegonCognom>CATALA</SegonCognom>
+						<Email>jordi.catala@example.com</Email>
+					</Destinatari>
+				</DadesDestinataris>
+				<MotiuEvidencia>DIPOSIT</MotiuEvidencia>]]>
+		</EvidenciaNotificacio>
+	</Diposit>
+</ActualitzarEstatNotificacio>
+</ActualitzarEstat>
+```
 
 ## Plantilles 
 La resolució de plantilles d'e-mail i SMS fa servir el motor Mustache:
