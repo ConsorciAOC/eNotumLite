@@ -49,7 +49,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 
 [Aquí podeu veure la definició complerta de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioCrearNotificacio.xsd)
 
-#### Notificació (NotificacioType)
+#### Notificació
 | Camp | Descripció |
 | ----- | --------- |
 | `Titol` | titol de la notificació, 100 caracters com a màxim |
@@ -113,11 +113,11 @@ Conté un llistat de notificacions, que expliquem a continuació.
 	</xs:all>
 </xs:complexType>
 ```
-#### Destinataris (DestinatarisType)
+#### Destinataris
 | Camp | Descripció |
 | ---- | ---------- |
 | `Destinatari` | persona física o persona juridica (choice) |
-| `Destinatari/Idioma` | idioma del destinatari, enum, valors ca, oc, es, en, opcional |
+| `Destinatari/Idioma` | idioma del destinatari, valors: ca, oc, es, en, opcional |
 | `Destinatari/PersonaFisica` | entitat persona fisica |
 | `Destinatari/PersonaFisica/BustiaCorreu` | llistat emails, string, màxim 3 busties |
 | `Destinatari/PersonaFisica/Telefon` | llistat telefons, string, màxim 3 telefons |
@@ -199,56 +199,9 @@ Conté un llistat de notificacions, que expliquem a continuació.
 		<xs:element name="SegonCognom" type="xs:string" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
-
-<xs:complexType name="FiltrePersonaType">
-	<xs:sequence>
-		<xs:element name="BustiaCorreu" type="EmailType" minOccurs="0"/>
-		<xs:element name="Telefon" type="xs:string" minOccurs="0"/>
-	</xs:sequence>
-</xs:complexType>
-
-<xs:simpleType name="EmailType">
-	<xs:restriction base="xs:string">
-		<xs:pattern value="[^@]+@[^\.]+\..+"/>
-	</xs:restriction>
-</xs:simpleType>
-
-<xs:complexType name="FiltrePersonaFisicaType">
-	<xs:complexContent>
-		<xs:extension base="FiltrePersonaType">
-			<xs:sequence>
-				<xs:element name="DocumentIdentificatiu" type="DocumentPersonaFisicaType" minOccurs="0"/>
-				<xs:element name="Nom" type="xs:string" minOccurs="0"/>
-				<xs:element name="PrimerCognom" type="xs:string" minOccurs="0"/>
-				<xs:element name="SegonCognom" type="xs:string" minOccurs="0"/>
-			</xs:sequence>
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-
-<xs:complexType name="FiltrePersonaJuridicaType">
-	<xs:complexContent>
-		<xs:extension base="FiltrePersonaType">
-			<xs:sequence>
-				<xs:element name="DocumentIdentificatiu" type="DocumentPersonaJuridicaType" minOccurs="0"/>
-				<xs:element name="RaoSocial" type="xs:string" minOccurs="0"/>
-				<xs:element name="PersonaVinculada" type="FiltrePersonaVinculadaType" minOccurs="0"/>
-			</xs:sequence>
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-
-<xs:complexType name="FiltrePersonaVinculadaType">
-	<xs:sequence>
-		<xs:element name="DocumentIdentificatiu" type="DocumentPersonaFisicaType" minOccurs="0"/>
-		<xs:element name="Nom" type="xs:string" minOccurs="0"/>
-		<xs:element name="PrimerCognom" type="xs:string" minOccurs="0"/>
-		<xs:element name="SegonCognom" type="xs:string" minOccurs="0"/>
-	</xs:sequence>
-</xs:complexType>
 ```
 
-### DadesOfici
+#### DadesOfici
 | Camp | Descripció |
 | ---- | ---------- |
 | `DadesOfici/CosNotificacio` | cos notificació, string, opcional |
@@ -265,7 +218,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 </xs:element>
 ```
 
-## DadesAvisos
+#### DadesAvisos
 | Camp | Descripció |
 | ---- | ---------- |
 | `DadesAvisos/PrimerAvis` | primer avis, boolean |
@@ -282,7 +235,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 </xs:element>
 ```
 
-## Documents (DocumentsType)
+#### Documents
 | Camp | Descripció |
 | ---- | ---------- |
 | `Documents/Document` | detalls de cada document, complex |
@@ -291,7 +244,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 | `Documents/Document/DigestDocument /digestAlgorithm` | atribut (no element), algortime digest, valor: SHA-256, SHA-384, SHA-512 |
 | `Documents/Document/Nom` | nom del document, string |
 | `Documents/Document/DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
-| `Documents/Document/Tipus` | tipus de document, enum, valors possibles: Resolució, Annex |
+| `Documents/Document/Tipus` | tipus de document,f valors possibles: Resolució, Annex |
 
 ```xml
 <xs:complexType name="DocumentsType">
@@ -315,24 +268,10 @@ Conté un llistat de notificacions, que expliquem a continuació.
 		</xs:extension>
 	</xs:simpleContent>
 </xs:complexType>
-
-<xs:simpleType name="TipusDocumentType">
-	<xs:restriction base="xs:string">
-		<xs:enumeration value="Resolució"/>
-		<xs:enumeration value="Annex"/>
-	</xs:restriction>
-</xs:simpleType>
-
-<xs:simpleType name="DigestAlgorithmType"> 
-	<xs:restriction base="xs:string">
-		<xs:enumeration value="SHA-256"/>
-		<xs:enumeration value="SHA-384"/>
-		<xs:enumeration value="SHA-512"/>
-	</xs:restriction>
-</xs:simpleType>
 ```
 
 [Aquí podeu veure la definició complerta d'elements importats als esquemes: Commons.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/Commons.xsd)
+
 
 ### Petició Consultar Notificació
 Aquesta petició facilita la consulta de notificacions, fins a un màxim de 100 notificacions per petició.
@@ -376,6 +315,7 @@ Conté un llistat de identificadors de notificació.
 
 ### Petició Practicar Notificació
 Aquesta petició serveix per acceptar o rebutjar notificacions, fins a un màxim de 100 notificacions.
+Dispara la generació d'una evidencia signada.
 La seva definició es:
 
 ```xml
