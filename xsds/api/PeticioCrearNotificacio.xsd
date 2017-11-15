@@ -36,15 +36,15 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-            <xs:element name="IdNotificacioEmissor" minOccurs="0">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:maxLength value="50"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+			<xs:element name="IdNotificacioEmissor" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
 			<xs:element name="TipusObjecte" type="TipusObjecteType"/>
-            <xs:element name="DataCreacio" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="DataCreacio" type="xs:dateTime" minOccurs="0"/>
 			<xs:element name="DiesExpiracio" type="xs:positiveInteger" minOccurs="0"/>
 			<xs:element name="Destinataris" type="DestinatarisType"/>
 			<xs:element name="Idioma" type="Idioma" default="ca" minOccurs="0"/>
@@ -56,16 +56,16 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-            <xs:element name="DadesAvisos" minOccurs="0">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="PrimerAvis" type="xs:boolean" default="false"/>
-                        <xs:element name="RepeticioAvis" type="xs:boolean" default="false"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
+			<xs:element name="DadesAvisos" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PrimerAvis" type="xs:boolean" default="false"/>
+						<xs:element name="RepeticioAvis" type="xs:boolean" default="false"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="Documents" type="DocumentsType"/>
 		</xs:all>
 	</xs:complexType>
-	
+
 </xs:schema>
