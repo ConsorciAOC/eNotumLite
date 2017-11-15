@@ -6,19 +6,20 @@
 ## Estat de les notificacions
 | Estat | Descripció | Estat previ |
 | ----- | ---------- | ----------- |
-| Entrada | Notificació registrada al sistema mitjançant el servei de Crear Notificació. | - |
-| Dipositada | Notificació dipositada mitjançant el motor d'estats. | Entrada |
-| Acceptada | Notificació practicada amb motiu [ACCEPTAR] mitjançant el servei de Practicar Notificació o durant la consulta si la notificació es de tipus [Comunicació] | Dipositada |
+| Entrada | Notificació introduïda al sistema mitjançant el servei de Crear Notificació. | - |
+| Dipositada | Notificació dipositada automàticament mitjançant el motor d'estats. | Entrada |
+| Acceptada | Notificació practicada amb motiu [ACCEPTAR] mitjançant el servei de Practicar Notificació o durant la consulta (si la notificació es de tipus [Comunicació]) | Dipositada |
 | Rebutjada | Notificació practicada amb motiu [REBUTJAR] mitjançant el servei de Practicar Notificació. | Dipositada |
-| Expirada | Notificació expirada, a partir de l'atribut [diesExpiracio], mitjançant el motor d'estats. | Dipositada |
+| Expirada | Notificació expirada automàticament, segons l'atribut [diesExpiracio]. | Dipositada |
 | Error | Notificació marcada amb un error, mitjançant el motor d'estats. | - |
 | Descartada | Notificació cancel·lada mitjançant el servei de Cancel·lar Notificació. | - |
 
-## Missatgeria
-* [esquemes .xsd](https://github.com/ConsorciAOC/eNotumLite/tree/master/xsds)
-
 ## Modalitats de consum
-//TODO
+* Aqui podeu veure els esquemes: https://github.com/ConsorciAOC/eNotumLite/tree/master/xsds
+* Crear Notificació
+* Consultar Notificació
+* Practicar Notificació
+* Cancelar Notificació
 
 ## Codis d'error
 | Codi   | Descripció |
