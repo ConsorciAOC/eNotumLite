@@ -49,56 +49,56 @@ Conté un llistat de notificacions, que expliquem a continuació.
 
 [Aquí podeu veure la definició completa de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioCrearNotificacio.xsd)
 
-#### Notificació
+#### Notificació (NotificacioType)
 | Camp | Descripció |
 | ----- | ---------- |
-| `//NotificacioType /Titol` | titol de la notificació, string, 100 caracters com a màxim |
-| `//NotificacioType /Referencia` | referencia de la notificació, string, 100 caracters com a màxim |
-| `//NotificacioType /IdNotificacioEmissor` | id de la notificació de l'emissor, string, 50 caracters com a màxim, opcional |
-| `//NotificacioType /TipusObjecte` | tipus de la notificació, enum, valors possibles: NOTIFICACIO, COMUNICACIO |
-| `//NotificacioType /DataCreacio` | data de creació de la notificació, data, opcional |
-| `//NotificacioType /DiesExpiracio` | dies per expirar automàticament la notificació, int, opcional |
-| `//NotificacioType /Destinataris` | llistat de destinataris, com a màxim 5 destinataris |
-| `//NotificacioType /Destinataris /Destinatari` | persona física o persona juridica (choice) |
-| `//NotificacioType /Destinataris /Destinatari /Idioma` | idioma del destinatari, enum, valors ca, oc, es, en, opcional |
-| `//NotificacioType /Destinataris /Destinatari /PersonaFisica` | entitat persona fisica |
-| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /BustiaCorreu` | llistat emails, string, màxim 3 busties |
-| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /Telefon` | llistat telefons, string, màxim 3 telefons |
-| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /DocumentIdentificatiu` | nif o passaport (choice) |
-| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /DocumentIdentificatiu /NIF` | nif, string, format validat |
-| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /DocumentIdentificatiu /PASSAPORT` | passaport, string, format validat |
-| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /Nom` | nom destinatari, string |
-| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /PrimerCognom` | primer cognom destinatari, string |
-| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /SegonCognom` | segon cognom destinatari, string, opcional |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica` | entitat persona juridica |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /BustiaCorreu` | llistat emails, string, màxim 3 busties |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /Telefon` | llistat telefons, string, màxim 3 telefons |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /DocumentIdentificatiu` | cif o vat (choice) |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /DocumentIdentificatiu /CIF` | cif, string, format validat |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /DocumentIdentificatiu /VAT` | vat, string, format validat |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /RaoSocial` | rao social, string |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada` | persona vinculada, opcional |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /DocumentIdentificatiu` | nif o passaport (choice) |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /DocumentIdentificatiu /NIF` | nif, string, format validat |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /DocumentIdentificatiu /PASSAPORT` | passaport, string, format validat |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /Nom` | nom destinatari, string |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /PrimerCognom` | primer cognom destinatari, string |
-| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PcersonaVinculada /SegonCognom` | segon cognom destinatari, string, opcional |
-| `//NotificacioType /Idioma` | idioma de la notificació, enum, valors ca, oc, es, en, opcional |
-| `//NotificacioType /DadesOfici` | dades ofici, complex opcional |
-| `//NotificacioType /DadesOfici /CosNotificacio` | cos notificació, string, opcional |
-| `//NotificacioType /DadesOfici /PeuRecurs` | peu recurs, string, opcional |
-| `//NotificacioType /DadesAvisos` | dades avisos, opcional |
-| `//NotificacioType /DadesAvisos /PrimerAvis` | primer avis, boolea |
-| `//NotificacioType /DadesAvisos /RepeticioAvis` | repetició avis, boolea |
-| `//NotificacioType /Documents` | llistat de documents de la notificació, màxim 100 documents |
-| `//NotificacioType /Documents /Document` | detalls de cada document, complex |
-| `//NotificacioType /Documents /Document /Nom` | nom del document, string |
-| `//NotificacioType /Documents /Document /DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
-| `//NotificacioType /Documents /Document /DigestDocument /digestAlgorithm` | atribut (no element), algortime digest, valor: SHA-256, SHA-384, SHA-512 |
-| `//NotificacioType /Documents /Document /Nom` | nom del document, string |
-| `//NotificacioType /Documents /Document /DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
-| `//NotificacioType /Documents /Document /Tipus` | tipus de document, enum, valors possibles: Resolució, Annex |
+| `Titol` | titol de la notificació, string, 100 caracters com a màxim |
+| `Referencia` | referencia de la notificació, string, 100 caracters com a màxim |
+| `IdNotificacioEmissor` | id de la notificació de l'emissor, string, 50 caracters com a màxim, opcional |
+| `TipusObjecte` | tipus de la notificació, enum, valors possibles: NOTIFICACIO, COMUNICACIO |
+| `DataCreacio` | data de creació de la notificació, data, opcional |
+| `DiesExpiracio` | dies per expirar automàticament la notificació, int, opcional |
+| `Destinataris` | llistat de destinataris, com a màxim 5 destinataris |
+| `Destinataris/Destinatari` | persona física o persona juridica (choice) |
+| `Destinataris/Destinatari/Idioma` | idioma del destinatari, enum, valors ca, oc, es, en, opcional |
+| `Destinataris/Destinatari /PersonaFisica` | entitat persona fisica |
+| `Destinataris/Destinatari /PersonaFisica/BustiaCorreu` | llistat emails, string, màxim 3 busties |
+| `Destinataris/Destinatari /PersonaFisica/Telefon` | llistat telefons, string, màxim 3 telefons |
+| `Destinataris/Destinatari /PersonaFisica/DocumentIdentificatiu` | nif o passaport (choice) |
+| `Destinataris/Destinatari /PersonaFisica/DocumentIdentificatiu /NIF` | nif, string, format validat |
+| `Destinataris/Destinatari /PersonaFisica/DocumentIdentificatiu /PASSAPORT` | passaport, string, format validat |
+| `Destinataris/Destinatari /PersonaFisica/Nom` | nom destinatari, string |
+| `Destinataris/Destinatari /PersonaFisica/PrimerCognom` | primer cognom destinatari, string |
+| `Destinataris/Destinatari /PersonaFisica/SegonCognom` | segon cognom destinatari, string, opcional |
+| `Destinataris/Destinatari /PersonaJuridica` | entitat persona juridica |
+| `Destinataris/Destinatari /PersonaJuridica/BustiaCorreu` | llistat emails, string, màxim 3 busties |
+| `Destinataris/Destinatari /PersonaJuridica/Telefon` | llistat telefons, string, màxim 3 telefons |
+| `Destinataris/Destinatari /PersonaJuridica/DocumentIdentificatiu` | cif o vat (choice) |
+| `Destinataris/Destinatari /PersonaJuridica/DocumentIdentificatiu /CIF` | cif, string, format validat |
+| `Destinataris/Destinatari /PersonaJuridica/DocumentIdentificatiu /VAT` | vat, string, format validat |
+| `Destinataris/Destinatari /PersonaJuridica/RaoSocial` | rao social, string |
+| `Destinataris/Destinatari /PersonaJuridica/PersonaVinculada` | persona vinculada, opcional |
+| `Destinataris/Destinatari /PersonaJuridica/PersonaVinculada /DocumentIdentificatiu` | nif o passaport (choice) |
+| `Destinataris/Destinatari /PersonaJuridica/PersonaVinculada /DocumentIdentificatiu /NIF` | nif, string, format validat |
+| `Destinataris/Destinatari /PersonaJuridica/PersonaVinculada /DocumentIdentificatiu /PASSAPORT` | passaport, string, format validat |
+| `Destinataris/Destinatari /PersonaJuridica/PersonaVinculada /Nom` | nom destinatari, string |
+| `Destinataris/Destinatari /PersonaJuridica/PersonaVinculada /PrimerCognom` | primer cognom destinatari, string |
+| `Destinataris/Destinatari /PersonaJuridica/PersonaVinculada /SegonCognom` | segon cognom destinatari, string, opcional |
+| `Idioma` | idioma de la notificació, enum, valors ca, oc, es, en, opcional |
+| `DadesOfici` | dades ofici, complex opcional |
+| `DadesOfici/CosNotificacio` | cos notificació, string, opcional |
+| `DadesOfici/PeuRecurs` | peu recurs, string, opcional |
+| `DadesAvisos` | dades avisos, opcional |
+| `DadesAvisos/PrimerAvis` | primer avis, boolea |
+| `DadesAvisos/RepeticioAvis` | repetició avis, boolea |
+| `Documents` | llistat de documents de la notificació, màxim 100 documents |
+| `Documents/Document` | detalls de cada document, complex |
+| `Documents/Document/Nom` | nom del document, string |
+| `Documents/Document/DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
+| `Documents/Document/DigestDocument /digestAlgorithm` | atribut (no element), algortime digest, valor: SHA-256, SHA-384, SHA-512 |
+| `Documents/Document/Nom` | nom del document, string |
+| `Documents/Document/DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
+| `Documents/Document/Tipus` | tipus de document, enum, valors possibles: Resolució, Annex |
 
 ```xml
 <xs:complexType name="NotificacioType">
@@ -212,17 +212,17 @@ La seva definició es:
 
 [Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioPracticar.xsd)
 
-#### Practicar
+#### Practicar (PracticarNotificacioType)
 | Camp | Descripció |
 | ----- | ---------- |
-| `//PracticarNotificacioType /IdNotificacio` | id de la notificació a practicar, int |
-| `//PracticarNotificacioType /Decisio` | decisió del ciutadà, valors possibles: ACCEPTAR, REBUTJAR |
-| `//PracticarNotificacioType /DocumentPersonaFisica` | nif o passaport (choice) |
-| `//PracticarNotificacioType /DocumentPersonaFisica /NIF` | nif, string, format validat |
-| `//PracticarNotificacioType /DocumentPersonaFisica /PASSAPORT` | passaport, string, format validat |
-| `//PracticarNotificacioType /DocumentPersonaJuridica` | cif o vat (choice) |
-| `//PracticarNotificacioType /DocumentPersonaJuridica /CIF` | cif, string, format validat |
-| `//PracticarNotificacioType /DocumentPersonaJuridica /VAT` | vat, string, format validat |
+| `IdNotificacio` | id de la notificació a practicar, int |
+| `Decisio` | decisió del ciutadà, valors possibles: ACCEPTAR, REBUTJAR |
+| `DocumentPersonaFisica` | nif o passaport (choice) |
+| `DocumentPersonaFisica/NIF` | nif, string, format validat |
+| `DocumentPersonaFisica/PASSAPORT` | passaport, string, format validat |
+| `DocumentPersonaJuridica` | cif o vat (choice) |
+| `DocumentPersonaJuridica/CIF` | cif, string, format validat |
+| `DocumentPersonaJuridica/VAT` | vat, string, format validat |
 
 ```xml
 <xs:complexType name="PracticarNotificacioType">
