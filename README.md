@@ -6,20 +6,48 @@
 ## Estat de les notificacions
 | Estat | Descripció | Estat previ |
 | ----- | ---------- | ----------- |
-| Entrada | Notificació introduïda al sistema mitjançant el servei de Crear Notificació. | - |
+| Entrada | Notificació introduïda al sistema mitjançant el servei de Crear Notificació. | Cap |
 | Dipositada | Notificació dipositada automàticament mitjançant el motor d'estats. | Entrada |
 | Acceptada | Notificació practicada amb motiu [ACCEPTAR] mitjançant el servei de Practicar Notificació o durant la consulta (si la notificació es de tipus [Comunicació]) | Dipositada |
 | Rebutjada | Notificació practicada amb motiu [REBUTJAR] mitjançant el servei de Practicar Notificació. | Dipositada |
 | Expirada | Notificació expirada automàticament, segons l'atribut [diesExpiracio]. | Dipositada |
-| Error | Notificació marcada amb un error, mitjançant el motor d'estats. | - |
-| Descartada | Notificació cancel·lada mitjançant el servei de Cancel·lar Notificació. | - |
+| Error | Notificació marcada amb un error, mitjançant el motor d'estats. | Qualsevol |
+| Descartada | Notificació cancel·lada mitjançant el servei de Cancel·lar Notificació. | Qualsevol |
 
 ## Modalitats de consum
-* Aqui podeu veure els esquemes: https://github.com/ConsorciAOC/eNotumLite/tree/master/xsds
-* Crear Notificació
-* Consultar Notificació
-* Practicar Notificació
-* Cancelar Notificació
+### Petició
+Totes les modalitats de consum WS que ofereix **eNotumLite** extenen el següent esquema de petició:
+```xml
+<xs:complexType name="PeticioType" abstract="true">
+	<xs:sequence>
+		<xs:element name="Emissor" type="xs:string"/>
+	</xs:sequence>
+</xs:complexType>
+```
+Per tant com és pot veure totes les peticions, a banda dels elements específics de cada modalitat de consum, tenen el següent element:
+* `//PeticioType/Emissor` que conté el codi de l'emissor.
+
+[Aquí podeu veure la definició completa de l'esquema Peticio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/Peticio.xsd)
+
+### Petició Crear Notificació
+Aquesta petició permet la creació de notificacions dins del sistema.
+
+[Aquí podeu veure la definició completa de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioCrearNotificacio.xsd)
+
+### Petició Consultar Notificació
+Aquesta petició facilita la consulta de notificacions.
+
+[Aquí podeu veure la definició completa de l'esquema PeticioConsultaNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioConsultaNotificacio.xsd)
+
+### Petició Cancelar Notificació
+Aquesta petició permet la cancelació de notificacions dins del sistema.
+
+[Aquí podeu veure la definició completa de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioCrearNotificacio.xsd)
+
+### Petició Dipositar Notificació
+Aquesta petició serveix per acceptar o rebutjar notificacions.
+
+[Aquí podeu veure la definició completa de l'esquema PeticioDipositarNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioDipositarNotificacio.xsd)
 
 ## Codis d'error
 | Codi   | Descripció |
