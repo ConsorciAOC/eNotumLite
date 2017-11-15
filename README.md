@@ -30,24 +30,210 @@ Per tant com és pot veure totes les peticions, a banda dels elements específic
 [Aquí podeu veure la definició completa de l'esquema Peticio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/Peticio.xsd)
 
 ### Petició Crear Notificació
-Aquesta petició permet la creació de notificacions dins del sistema.
+Aquesta petició permet la creació de notificacions dins del sistema, fins a un màxim de 100 notificacions per petició.
+Conté un llistat de notificacions, que expliquem a continuació.
+
+```xml
+<xs:element name="PeticioCrearNotificacio">
+	<xs:complexType>
+		<xs:complexContent>
+			<xs:extension base="PeticioType">
+				<xs:sequence>
+					<xs:element name="Notificacio" type="NotificacioType" maxOccurs="100"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:element>
+```
 
 [Aquí podeu veure la definició completa de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioCrearNotificacio.xsd)
+
+#### Notificació
+| Camp | Descripció |
+| ----- | ---------- |
+| `//NotificacioType /Titol` | titol de la notificació, string, 100 caracters com a màxim |
+| `//NotificacioType /Referencia` | referencia de la notificació, string, 100 caracters com a màxim |
+| `//NotificacioType /IdNotificacioEmissor` | id de la notificació de l'emissor, string, 50 caracters com a màxim, opcional |
+| `//NotificacioType /TipusObjecte` | tipus de la notificació, enum, valors possibles: NOTIFICACIO, COMUNICACIO |
+| `//NotificacioType /DataCreacio` | data de creació de la notificació, data, opcional |
+| `//NotificacioType /DiesExpiracio` | dies per expirar automàticament la notificació, int, opcional |
+| `//NotificacioType /Destinataris` | llistat de destinataris, com a màxim 5 destinataris |
+| `//NotificacioType /Destinataris /Destinatari` | persona física o persona juridica (choice) |
+| `//NotificacioType /Destinataris /Destinatari /Idioma` | idioma del destinatari, enum, valors ca, oc, es, en, opcional |
+| `//NotificacioType /Destinataris /Destinatari /PersonaFisica` | entitat persona fisica |
+| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /BustiaCorreu` | llistat emails, string, màxim 3 busties |
+| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /Telefon` | llistat telefons, string, màxim 3 telefons |
+| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /DocumentIdentificatiu` | nif o passaport (choice) |
+| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /DocumentIdentificatiu /NIF` | nif, string, format validat |
+| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /DocumentIdentificatiu /PASSAPORT` | passaport, string, format validat |
+| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /Nom` | nom destinatari, string |
+| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /PrimerCognom` | primer cognom destinatari, string |
+| `//NotificacioType /Destinataris /Destinatari /PersonaFisica /SegonCognom` | segon cognom destinatari, string, opcional |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica` | entitat persona juridica |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /BustiaCorreu` | llistat emails, string, màxim 3 busties |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /Telefon` | llistat telefons, string, màxim 3 telefons |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /DocumentIdentificatiu` | cif o vat (choice) |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /DocumentIdentificatiu /CIF` | cif, string, format validat |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /DocumentIdentificatiu /VAT` | vat, string, format validat |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /RaoSocial` | rao social, string |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada` | persona vinculada, opcional |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /DocumentIdentificatiu` | nif o passaport (choice) |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /DocumentIdentificatiu /NIF` | nif, string, format validat |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /DocumentIdentificatiu /PASSAPORT` | passaport, string, format validat |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /Nom` | nom destinatari, string |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PersonaVinculada /PrimerCognom` | primer cognom destinatari, string |
+| `//NotificacioType /Destinataris /Destinatari /PersonaJuridica /PcersonaVinculada /SegonCognom` | segon cognom destinatari, string, opcional |
+| `//NotificacioType /Idioma` | idioma de la notificació, enum, valors ca, oc, es, en, opcional |
+| `//NotificacioType /DadesOfici` | dades ofici, complex opcional |
+| `//NotificacioType /DadesOfici /CosNotificacio` | cos notificació, string, opcional |
+| `//NotificacioType /DadesOfici /PeuRecurs` | peu recurs, string, opcional |
+| `//NotificacioType /DadesAvisos` | dades avisos, opcional |
+| `//NotificacioType /DadesAvisos /PrimerAvis` | primer avis, boolea |
+| `//NotificacioType /DadesAvisos /RepeticioAvis` | repetició avis, boolea |
+| `//NotificacioType /Documents` | llistat de documents de la notificació, màxim 100 documents |
+| `//NotificacioType /Documents /Document` | detalls de cada document, complex |
+| `//NotificacioType /Documents /Document /Nom` | nom del document, string |
+| `//NotificacioType /Documents /Document /DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
+| `//NotificacioType /Documents /Document /DigestDocument /digestAlgorithm` | atribut (no element), algortime digest, valor: SHA-256, SHA-384, SHA-512 |
+| `//NotificacioType /Documents /Document /Nom` | nom del document, string |
+| `//NotificacioType /Documents /Document /DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
+| `//NotificacioType /Documents /Document /Tipus` | tipus de document, enum, valors possibles: Resolució, Annex |
+
+```xml
+<xs:complexType name="NotificacioType">
+	<xs:all>
+		<xs:element name="Titol">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="Referencia">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="IdNotificacioEmissor" minOccurs="0">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="50"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="TipusObjecte" type="TipusObjecteType"/>
+		<xs:element name="DataCreacio" type="xs:dateTime" minOccurs="0"/>
+		<xs:element name="DiesExpiracio" type="xs:positiveInteger" minOccurs="0"/>
+		<xs:element name="Destinataris" type="DestinatarisType"/>
+		<xs:element name="Idioma" type="Idioma" default="ca" minOccurs="0"/>
+		<xs:element name="DadesOfici" minOccurs="0">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="CosNotificacio" type="xs:string" minOccurs="0"/>
+					<xs:element name="PeuRecurs" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="DadesAvisos" minOccurs="0">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="PrimerAvis" type="xs:boolean" default="false"/>
+					<xs:element name="RepeticioAvis" type="xs:boolean" default="false"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="Documents" type="DocumentsType"/>
+	</xs:all>
+</xs:complexType>
+```
+
+[Aquí podeu veure la definició completa d'elements importats a la notificació Commons.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/Commons.xsd)
 
 ### Petició Consultar Notificació
-Aquesta petició facilita la consulta de notificacions.
+Aquesta petició facilita la consulta de notificacions, fins a un màxim de 100 notificacions per petició.
+Conté un llistat de identificadors de notificació.
 
-[Aquí podeu veure la definició completa de l'esquema PeticioConsultaNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioConsultaNotificacio.xsd)
+```xml
+<xs:element name="PeticioConsulta">
+	<xs:complexType>
+		<xs:complexContent>
+			<xs:extension base="PeticioType">
+				<xs:sequence>
+					<xs:element name="IdNotificacio" type="xs:integer" maxOccurs="100"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:element>
+```
+
+[Aquí podeu veure la definició completa de l'esquema PeticioConsulta.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioConsulta.xsd)
 
 ### Petició Cancelar Notificació
-Aquesta petició permet la cancelació de notificacions dins del sistema.
+Aquesta petició permet la cancelació de notificacions dins del sistema, fins a un màxim de 100 notificacions per petició.
+Conté un llistat de identificadors de notificació.
 
-[Aquí podeu veure la definició completa de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioCrearNotificacio.xsd)
+```xml
+<xs:element name="PeticioCancelar">
+	<xs:complexType>
+		<xs:complexContent>
+			<xs:extension base="PeticioType">
+				<xs:sequence>
+					<xs:element name="IdNotificacio" type="xs:integer" maxOccurs="100"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:element>
+```
 
-### Petició Dipositar Notificació
-Aquesta petició serveix per acceptar o rebutjar notificacions.
+[Aquí podeu veure la definició completa de l'esquema PeticioCancelar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioCancelar.xsd)
 
-[Aquí podeu veure la definició completa de l'esquema PeticioDipositarNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioDipositarNotificacio.xsd)
+### Petició Practicar Notificació
+Aquesta petició serveix per acceptar o rebutjar notificacions, fins a un màxim de 100 notificacions.
+La seva definició es:
+
+```xml
+<xs:element name="PeticioPracticar">
+	<xs:complexType>
+		<xs:complexContent>
+			<xs:extension base="PeticioType">
+				<xs:sequence>
+					<xs:element name="PracticarNotificacio" type="PracticarNotificacioType" maxOccurs="100"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:element>
+```
+
+[Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioPracticar.xsd)
+
+#### Practicar
+| Camp | Descripció |
+| ----- | ---------- |
+| `//PracticarNotificacioType /IdNotificacio` | id de la notificació a practicar, int |
+| `//PracticarNotificacioType /Decisio` | decisió del ciutadà, valors possibles: ACCEPTAR, REBUTJAR |
+| `//PracticarNotificacioType /DocumentPersonaFisica` | nif o passaport (choice) |
+| `//PracticarNotificacioType /DocumentPersonaFisica /NIF` | nif, string, format validat |
+| `//PracticarNotificacioType /DocumentPersonaFisica /PASSAPORT` | passaport, string, format validat |
+| `//PracticarNotificacioType /DocumentPersonaJuridica` | cif o vat (choice) |
+| `//PracticarNotificacioType /DocumentPersonaJuridica /CIF` | cif, string, format validat |
+| `//PracticarNotificacioType /DocumentPersonaJuridica /VAT` | vat, string, format validat |
+
+```xml
+<xs:complexType name="PracticarNotificacioType">
+	<xs:sequence>
+		<xs:element name="IdNotificacio" type="xs:integer"/>
+		<xs:element name="Decisio" type="DecisioPracticarType"/>
+		<xs:element name="DocumentPersonaFisica" type="DocumentPersonaFisicaType" minOccurs="0"/>
+		<xs:element name="DocumentPersonaJuridica" type="DocumentPersonaJuridicaType" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
+```
 
 ## Codis d'error
 | Codi   | Descripció |
