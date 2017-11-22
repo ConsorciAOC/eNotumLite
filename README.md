@@ -453,6 +453,16 @@ Codi d'exemple per tal de recórrer llistats:
 {{/notificacio.documents}}
 ```
 
+Codi d'exemple per condicionals:
+``` 
+{{#destinatari.raoSocial}}
+  Persona juridica
+{{/destinatari.raoSocial}}
+{{^destinatari.raoSocial}}
+  Persona fisica
+{{/destinatari.raoSocial}}
+```
+
 | Descripció dada | Codi per accedir |
 | --------------- | -----------------|
 | Identificador de la notificació del emissor | {{notificacio.idNotificacioEmissor}} |
