@@ -12,7 +12,8 @@ Per tant els integradors que vulguin accedir al **eNotumLite** ho hauran de fer 
 
 ![eNotum_integracio_pci](https://github.com/ConsorciAOC/eNotum/blob/master/missatgeria/imgs/eNotum_arquitectura_pci.png)
 
-El `<CodigoProducto>` i el `<CodigoCertificado>` de la missatgeria genèrica de _PCI_ per a l'ús d'**eNotumLite** és per ambdòs **NT-LITE**.
+El `<CodigoProducto>` i el `<CodigoCertificado>` de la missatgeria genèrica de _PCI_ per a l'ús d'**eNotumLite** és per ambdòs: 
+* **NT-LITE**
 
 ## Cicle de vida de les notificacions
 ![cicle de vida](https://github.com/ConsorciAOC/eNotumLite/blob/master/estats-enotum-lite.png)
