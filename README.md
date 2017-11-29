@@ -45,7 +45,7 @@ Totes les modalitats de consum WS que ofereix **eNotumLite** extenen el següent
 Per tant com és pot veure totes les peticions, a banda dels elements específics de cada modalitat de consum, tenen el següent element:
 * `//PeticioType/Emissor` que conté el codi de l'emissor.
 
-[Aquí podeu veure la definició complerta de l'esquema Peticio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/Peticio.xsd)
+[Aquí podeu veure la definició complerta de l'esquema Peticio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/Peticio.xsd)
 
 ### Petició Crear Notificació
 Aquesta petició permet la creació de notificacions dins del sistema, fins a un màxim de 100 notificacions per petició.
@@ -65,7 +65,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 </xs:element>
 ```
 
-[Aquí podeu veure la definició complerta de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioCrearNotificacio.xsd)
+[Aquí podeu veure la definició complerta de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioCrearNotificacio.xsd)
 
 #### Notificació
 | Camp | Descripció |
@@ -288,7 +288,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 </xs:complexType>
 ```
 
-[Aquí podeu veure la definició complerta d'elements importats als esquemes: Commons.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/Commons.xsd)
+[Aquí podeu veure la definició complerta d'elements importats als esquemes: Commons.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/Commons.xsd)
 
 
 ### Petició Consultar Notificació
@@ -309,7 +309,7 @@ Conté un llistat de identificadors de notificació.
 </xs:element>
 ```
 
-[Aquí podeu veure la definició completa de l'esquema PeticioConsulta.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioConsulta.xsd)
+[Aquí podeu veure la definició completa de l'esquema PeticioConsulta.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioConsulta.xsd)
 
 ### Petició Cancelar Notificació
 Aquesta petició permet la cancelació de notificacions dins del sistema, fins a un màxim de 100 notificacions per petició.
@@ -329,7 +329,7 @@ Conté un llistat de identificadors de notificació.
 </xs:element>
 ```
 
-[Aquí podeu veure la definició completa de l'esquema PeticioCancelar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioCancelar.xsd)
+[Aquí podeu veure la definició completa de l'esquema PeticioCancelar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioCancelar.xsd)
 
 ### Petició Practicar Notificació
 Aquesta petició serveix per acceptar o rebutjar notificacions, fins a un màxim de 100 notificacions.
@@ -350,7 +350,8 @@ La seva definició es:
 </xs:element>
 ```
 
-[Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/api/PeticioPracticar.xsd)
+[Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/
+PeticioPracticar.xsd)
 
 #### Practicar (PracticarNotificacioType)
 | Camp | Descripció |
