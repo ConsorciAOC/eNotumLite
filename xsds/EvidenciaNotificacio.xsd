@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.aoc.cat/eNotum"
+	targetNamespace="http://www.aoc.cat/eNotum"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	
+	<xs:include schemaLocation="Commons.xsd"/>
+
+	<xs:element name="EvidenciaNotificacio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DadesNotificacio"/>
+				<xs:element name="Documents" type="DocumentsType"/>
+				<xs:element name="Destinataris" type="DestinatarisType"/>
+				<xs:element name="Signatari" type="SignatariType"/>
+				<xs:element name="MotiuEvidencia" type="MotiuEvidenciaType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:simpleType name="MotiuEvidenciaType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DIPOSIT"/>
+			<xs:enumeration value="ACCEPTAR"/>
+			<xs:enumeration value="REBUTJAR"/>
+			<xs:enumeration value="EXPIRAR"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="DadesNotificacio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="IdNotificacio" type="xs:integer"/>
+				<xs:element name="Referencia" type="xs:string"/>
+				<xs:element name="Titol" type="xs:string"/>
+				<xs:element name="TipusObjecte" type="TipusObjecteType"/>
+                <xs:element name="DataCreacio" type="xs:dateTime"/>
+                <xs:element name="DataDiposit" type="xs:dateTime"/>
+                <xs:element name="DataPracticar" type="xs:dateTime" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="SignatariType">
+		<xs:sequence>
+			<xs:element name="DocumentPersonaFisica" type="DocumentPersonaFisicaType" minOccurs="0"/>
+			<xs:element name="DocumentPersonaJuridica" type="DocumentPersonaJuridicaType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

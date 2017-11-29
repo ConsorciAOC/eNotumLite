@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.aoc.cat/eNotum"
+	targetNamespace="http://www.aoc.cat/eNotum"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+
+	<xs:simpleType name="TipusObjecteType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NOTIFICACIO"/>
+			<xs:enumeration value="COMUNICACIO"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Idioma">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ca"/>
+			<xs:enumeration value="es"/>
+			<xs:enumeration value="oc"/>
+			<xs:enumeration value="en"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="DestinatarisType">
+		<xs:sequence>
+			<xs:element name="Destinatari" type="DestinatariType" maxOccurs="5"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DestinatariType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="PersonaFisica" type="PersonaFisicaType"/>
+				<xs:element name="PersonaJuridica" type="PersonaJuridicaType"/>
+				<xs:element name="Colectiu" type="ColectiuType"/>
+			</xs:choice>
+			<xs:element name="Idioma" type="Idioma" default="ca" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PersonaType" abstract="true">
+		<xs:sequence>
+			<xs:element name="BustiaCorreu" type="EmailType" minOccurs="0" maxOccurs="3"/>
+			<xs:element name="Telefon" type="xs:string" minOccurs="0" maxOccurs="3"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PersonaFisicaType">
+		<xs:complexContent>
+			<xs:extension base="PersonaType">
+				<xs:sequence>
+					<xs:element name="DocumentIdentificatiu" type="DocumentPersonaFisicaType"/>
+					<xs:element name="Nom" type="xs:string"/>
+					<xs:element name="PrimerCognom" type="xs:string"/>
+					<xs:element name="SegonCognom" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="PersonaJuridicaType">
+		<xs:complexContent>
+			<xs:extension base="PersonaType">
+				<xs:sequence>
+					<xs:element name="DocumentIdentificatiu" type="DocumentPersonaJuridicaType"/>
+					<xs:element name="RaoSocial" type="xs:string" nillable="false" />
+					<xs:element name="PersonaVinculada" type="PersonaVinculadaType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ColectiuType">
+		<xs:complexContent>
+			<xs:extension base="PersonaType">
+				<xs:sequence>
+					<xs:element name="Identificador" type="xs:string" nillable="false"/>
+					<xs:element name="Nom" type="xs:string" nillable="false"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="PersonaVinculadaType">
+		<xs:sequence>
+			<xs:element name="DocumentIdentificatiu" type="DocumentPersonaFisicaType"/>
+			<xs:element name="Nom" type="xs:string"/>
+			<xs:element name="PrimerCognom" type="xs:string"/>
+			<xs:element name="SegonCognom" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="EmailType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^@]+@[^\.]+\..+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="DocumentsType">
+		<xs:sequence>
+			<xs:element name="Document" maxOccurs="100">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Nom" type="xs:string"/>
+						<xs:element name="DigestDocument" type="DigestDocumentType"/>
+						<xs:element name="Tipus" type="TipusDocumentType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DigestDocumentType">
+		<xs:simpleContent>
+			<xs:extension base="xs:base64Binary">
+				<xs:attribute name="digestAlgorithm" type="DigestAlgorithmType"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="TipusDocumentType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Resolució"/>
+			<xs:enumeration value="Annex"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DigestAlgorithmType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SHA-256"/>
+			<xs:enumeration value="SHA-384"/>
+			<xs:enumeration value="SHA-512"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NIF">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[XYZ]?[0-9]{7,8}[A-Z]"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CIF">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z][0-9]{7}[A-J,0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DecisioPracticarType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ACCEPTAR"/>
+			<xs:enumeration value="REBUTJAR"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="DocumentPersonaFisicaType">
+		<xs:choice>
+			<xs:element name="NIF" type="NIF"/>
+			<xs:element name="PASSAPORT" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="DocumentPersonaJuridicaType">
+		<xs:choice>
+			<xs:element name="CIF" type="CIF"/>
+			<xs:element name="VAT" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+
+    <xs:complexType name="ErrorType">
+        <xs:sequence>
+            <xs:element name="CodiError" type="xs:string"/>
+            <xs:element name="MissatgeError" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.aoc.cat/eNotum" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://www.aoc.cat/eNotum" 
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+
+    <xs:include schemaLocation="Resposta.xsd" />
+
+    <xs:element name="RespostaCancelar">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="RespostaType">
+                    <xs:sequence>
+                        <xs:element name="ResultatCancelarNotificacio" type="ResultatCancelarNotificacioType" maxOccurs="100" />
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ResultatCancelarNotificacioType">
+        <xs:sequence>
+            <xs:element name="IdNotificacio" type="xs:integer" />
+            <xs:element name="Error" type="ErrorType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

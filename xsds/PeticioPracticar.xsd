@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.aoc.cat/eNotum"
+	targetNamespace="http://www.aoc.cat/eNotum"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+    
+	<xs:include schemaLocation="Peticio.xsd"/>
+
+	<xs:element name="PeticioPracticar">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="PeticioType">
+					<xs:sequence>
+						<xs:element name="PracticarNotificacio" type="PracticarNotificacioType" maxOccurs="100"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="PracticarNotificacioType">
+		<xs:sequence>
+			<xs:element name="IdNotificacio" type="xs:integer"/>
+			<xs:element name="Decisio" type="DecisioPracticarType"/>
+			<xs:element name="DocumentPersonaFisica" type="DocumentPersonaFisicaType" minOccurs="0"/>
+			<xs:element name="DocumentPersonaJuridica" type="DocumentPersonaJuridicaType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

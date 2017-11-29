@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.aoc.cat/eNotum"
+	targetNamespace="http://www.aoc.cat/eNotum"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+
+	<xs:include schemaLocation="Peticio.xsd"/>
+
+	<xs:element name="PeticioCrearNotificacio">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="PeticioType">
+					<xs:sequence>
+						<xs:element name="Notificacio" type="NotificacioType" maxOccurs="100"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="NotificacioType">
+		<xs:all>
+			<xs:element name="Titol">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Referencia">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="IdNotificacioEmissor" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="TipusObjecte" type="TipusObjecteType"/>
+			<xs:element name="DataCreacio" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="DiesExpiracio" type="xs:positiveInteger" minOccurs="0"/>
+			<xs:element name="Destinataris" type="DestinatarisType"/>
+			<xs:element name="Idioma" type="Idioma" default="ca" minOccurs="0"/>
+			<xs:element name="DadesOfici" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CosNotificacio" type="xs:string" minOccurs="0"/>
+						<xs:element name="PeuRecurs" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DadesAvisos" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PrimerAvis" type="xs:boolean" default="true"/>
+						<xs:element name="RepeticioAvis" type="xs:boolean" default="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Documents" type="DocumentsType"/>
+		</xs:all>
+	</xs:complexType>
+
+</xs:schema>
