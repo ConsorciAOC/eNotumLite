@@ -393,6 +393,7 @@ PeticioPracticar.xsd)
 | CON_01 | La notificació no existeix a la base de dades. |
 | CON_02 | L'emissor de la petició no coincideix amb l'emissor de la notificació. |
 | PRC_01 | Si el destinatari està indicat a la petició, i la notificació té més d'un destinatari, el sistema no ha trobat el destinatari a la notificació. La cerca està basada en el document identificatiu. Si el destinatari no està indicat a la petició, i la notificació té més d'un destinatari, el sistema no pot resoldre quin es el destinatari de la petició. |
+| PRC_02 | Indica que la notificació es troba en un estat diferent al de dipósit i que per tant no es pot practicar. |
 
 ## Resposta d'error
 Exemple d'una resposta d'error:
