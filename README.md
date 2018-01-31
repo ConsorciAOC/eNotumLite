@@ -257,11 +257,9 @@ Conté un llistat de notificacions, que expliquem a continuació.
 | Camp | Descripció |
 | ---- | ---------- |
 | `Documents/Document` | detalls de cada document, complex |
-| `Documents/Document/Nom` | nom del document, string |
+| `Documents/Document/Nom` | nom del document, string (màxim 100 caràcters) |
 | `Documents/Document/DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
 | `Documents/Document/DigestDocument /digestAlgorithm` | atribut (no element), algortime digest, valor: SHA-256, SHA-384, SHA-512 |
-| `Documents/Document/Nom` | nom del document, string |
-| `Documents/Document/DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
 | `Documents/Document/Tipus` | tipus de document,f valors possibles: Resolució, Annex |
 
 ```xml
