@@ -388,6 +388,7 @@ PeticioPracticar.xsd)
 | NOT_07 | El document identificatiu de la persona física ha de tenir com a mínim un NIF o Passaport vàlid. |
 | NOT_08 | El document identificatiu de la persona jurídica ha de tenir com a mínim un CIF o VAT vàlid. |
 | NOT_09 | Els documents identificatius (NIF, CIF, passaport, VAT) dels destinataris de la notificació no poden tenir duplicats. |
+| NOT_10 | Per a notificar a una administració pública catalana heu d'utilitzar la plataforma EACAT. |
 | CON_01 | La notificació no existeix a la base de dades. |
 | CON_02 | L'emissor de la petició no coincideix amb l'emissor de la notificació. |
 | PRC_01 | Si el destinatari està indicat a la petició, i la notificació té més d'un destinatari, el sistema no ha trobat el destinatari a la notificació. La cerca està basada en el document identificatiu. Si el destinatari no està indicat a la petició, i la notificació té més d'un destinatari, el sistema no pot resoldre quin es el destinatari de la petició. |
