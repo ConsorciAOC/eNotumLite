@@ -348,6 +348,8 @@ La seva definició es:
 </xs:element>
 ```
 
+[Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioPracticar.xsd)
+
 Només es pot practicar una notificació en un dels següents estats `DIPOSITADA`,`ACCEPTADA` o `REBUTJADA`.
 
 En cas de practicar una notificació en estat: 
@@ -356,9 +358,6 @@ En cas de practicar una notificació en estat:
 * `ACCEPTADA`|`REBUTJADA` es tornarà l'evidència creada amb anterioritat.
 
 En cas que s'intenti practicar una notificació ja practicada anteriorment, la `<Decisio>` informada ha de coincidir amb l'estat actual, sinó es retornarà un error indicant el problema.
-
-
-[Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioPracticar.xsd)
 
 #### Practicar (PracticarNotificacioType)
 | Camp | Descripció |
