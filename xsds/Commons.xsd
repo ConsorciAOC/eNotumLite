@@ -102,7 +102,13 @@
 			<xs:element name="Document" maxOccurs="100">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Nom" type="xs:string"/>
+						<xs:element name="Nom">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="100"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
 						<xs:element name="DigestDocument" type="DigestDocumentType"/>
 						<xs:element name="Tipus" type="TipusDocumentType"/>
 					</xs:sequence>
