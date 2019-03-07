@@ -348,8 +348,17 @@ La seva definició es:
 </xs:element>
 ```
 
-[Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/
-PeticioPracticar.xsd)
+Només es pot practicar una notificació en un dels següents estats `DIPOSITADA`,`ACCEPTADA` o `REBUTJADA`.
+
+En cas de practicar una notificació en estat: 
+
+* `DIPOSITADA` es generarà l'evidència de l'acció de practicar.
+* `ACCEPTADA`|`REBUTJADA` es tornarà l'evidència creada amb anterioritat.
+
+En cas que s'intenti practicar una notificació ja practicada anteriorment, la `<Decisio>` informada ha de coincidir amb l'estat actual, sinó es retornarà un error indicant el problema.
+
+
+[Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioPracticar.xsd)
 
 #### Practicar (PracticarNotificacioType)
 | Camp | Descripció |
@@ -393,6 +402,7 @@ PeticioPracticar.xsd)
 | CON_02 | L'emissor de la petició no coincideix amb l'emissor de la notificació. |
 | PRC_01 | Si el destinatari està indicat a la petició, i la notificació té més d'un destinatari, el sistema no ha trobat el destinatari a la notificació. La cerca està basada en el document identificatiu. Si el destinatari no està indicat a la petició, i la notificació té més d'un destinatari, el sistema no pot resoldre quin es el destinatari de la petició. |
 | PRC_02 | Indica que la notificació es troba en un estat diferent al de dipósit i que per tant no es pot practicar. |
+| PRC_03 | La notificació esta en estat {estatNotificacio} i s'està intentant {decisioPracticar} |
 
 ## Resposta d'error
 Exemple d'una resposta d'error:
