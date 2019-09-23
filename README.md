@@ -421,7 +421,7 @@ Exemple d'una resposta d'error:
 ## Callbacks
 Els callbacks s'enviaran a l'emissor de les notificacions quan aquestes passin a l'estat Dipositada i quan passin a l'estat Expirada.
 
-L'esquema dels missatges de callback el podeu trobar a la carpeta: * [esquemes .xsd](https://github.com/ConsorciAOC/eNotumLite/tree/master/xsds)
+L'esquema de les peticions de callback que generarà _eNotumLite_ cap al vostre sistema, i de les respostes que espera les podeu veure a la definició de [PeticioActualitzarEstat.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioActualitzarEstat.xsd) i [RespostaActualitzarEstat.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/RespostaActualitzarEstat.xsd) respecitvament.
 
 Exemple d'un missatge de callback
 ```xml
