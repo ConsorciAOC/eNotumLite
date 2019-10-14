@@ -148,9 +148,10 @@ Conté un llistat de notificacions, que expliquem a continuació.
 | `Destinatari/PersonaJuridica` | entitat persona juridica |
 | `Destinatari/PersonaJuridica/BustiaCorreu` | llistat emails, string, màxim 3 busties |
 | `Destinatari/PersonaJuridica/Telefon` | llistat telefons, string, màxim 3 telefons |
-| `Destinatari/PersonaJuridica/DocumentIdentificatiu` | cif o vat (choice) |
+| `Destinatari/PersonaJuridica/DocumentIdentificatiu` | cif, vat o identificador (intervinent ministeri fiscal) (choice) |
 | `Destinatari/PersonaJuridica/DocumentIdentificatiu/CIF` | cif, string, format validat |
 | `Destinatari/PersonaJuridica/DocumentIdentificatiu/VAT` | vat, string, format validat |
+| `Destinatari/PersonaJuridica/DocumentIdentificatiu/Identificador` | Identificador, string |
 | `Destinatari/PersonaJuridica/RaoSocial` | rao social, string |
 | `Destinatari/PersonaJuridica/PersonaVinculada` | persona vinculada, opcional |
 | `Destinatari/PersonaJuridica/PersonaVinculada/DocumentIdentificatiu` | nif o passaport (choice) |
@@ -367,9 +368,10 @@ En cas que s'intenti practicar una notificació ja practicada anteriorment, la `
 | `DocumentPersonaFisica` | nif o passaport (choice) |
 | `DocumentPersonaFisica/NIF` | nif, string, format validat |
 | `DocumentPersonaFisica/PASSAPORT` | passaport, string, format validat |
-| `DocumentPersonaJuridica` | cif o vat (choice) |
+| `DocumentPersonaJuridica` | cif, vat o Identificador (choice) |
 | `DocumentPersonaJuridica/CIF` | cif, string, format validat |
 | `DocumentPersonaJuridica/VAT` | vat, string, format validat |
+| `DocumentPersonaJuridica/Identificador` | Identificador, string |
 
 ```xml
 <xs:complexType name="PracticarNotificacioType">
