@@ -170,6 +170,7 @@
 		<xs:choice>
 			<xs:element name="CIF" type="CIF"/>
 			<xs:element name="VAT" type="xs:string"/>
+			<xs:element name="Identificador" type="xs:string"/>
 		</xs:choice>
 	</xs:complexType>
 
