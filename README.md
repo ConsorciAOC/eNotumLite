@@ -10,7 +10,7 @@ Tal i com es reflecteix a la següent figura, el Backend d'**eNotumLite** s'inte
 
 Per tant els integradors que vulguin accedir al **eNotumLite** ho hauran de fer a través de la missatgeria de la _PCI_ utilitzant l'element `<DatosEspecificos>` d'aquesta, per a més informació podeu consultar [el document d'integració de la _PCI_ aqui](https://www.aoc.cat/knowledge-base/plataforma-de-col-laboracio-administrativa-2/idservei/enotum/)
 
-![eNotum_integracio_pci](https://github.com/ConsorciAOC/eNotum/blob/master/missatgeria/imgs/eNotum_arquitectura_pci.png)
+![eNotum_integracio_pci](imgs/eNotum_arquitectura_pci.png)
 
 El `<CodigoProducto>` i el `<CodigoCertificado>` de la missatgeria genèrica de _PCI_ per a l'ús d'**eNotumLite** és per ambdòs: 
 * **NT-LITE**
@@ -22,7 +22,7 @@ El `<CodigoProducto>` i el `<CodigoCertificado>` de la missatgeria genèrica de 
 
 
 ## Cicle de vida de les notificacions
-![cicle de vida](https://github.com/ConsorciAOC/eNotumLite/blob/master/estats-enotum-lite.png)
+![cicle de vida](imgs/estats-enotum-lite.png)
 
 ## Vida de les notificacions al sistema
 El temps de vida de les notificacions al sistema serà de 2 mesos, un cop passat aquest termini és purgarà la informació del sistema i és mantindrà la mateixa en format *.zip* durant un temps addicional per al integrador que la requereixi.
