@@ -15,6 +15,12 @@ Per tant els integradors que vulguin accedir al **eNotumLite** ho hauran de fer 
 El `<CodigoProducto>` i el `<CodigoCertificado>` de la missatgeria genèrica de _PCI_ per a l'ús d'**eNotumLite** és per ambdòs: 
 * **NT-LITE**
 
+|IMPORTANT |
+|---- | 
+|**Recordeu que els entorns de DEV i PRE estan destinats únicament per a l’ús de proves** i que, d’acord amb el Supervisor Europeu de Protecció de Dades (EDPS), **en cap cas podem fer servir dades personals reals**. Així doncs, als entorns de DEV i PRE hem de fer servir exclusivament dades fictícies o creades artificialment. |
+|A l'hora de realitzar la vostra integració amb eNotumLite, tingueu present les recomanacions sobre **Protecció de Dades** recollides al document [La privacitat des del disseny i la privacitat per defecte - Guia per a desenvolupadors](https://www.apdcat.cat/content/dam/aem-apdcat/03-documentacio/documents/guiadesenvolupadors/GUIA-PDDD.pdf) de l'APDCAT. |
+
+
 ## Cicle de vida de les notificacions
 ![cicle de vida](https://github.com/ConsorciAOC/eNotumLite/blob/master/estats-enotum-lite.png)
 
