@@ -57,7 +57,7 @@ Totes les modalitats de consum WS que ofereix **eNotumLite** extenen el següent
 Per tant com és pot veure totes les peticions, a banda dels elements específics de cada modalitat de consum, tenen el següent element:
 * `//PeticioType/Emissor` que conté el codi de l'emissor.
 
-[Aquí podeu veure la definició complerta de l'esquema Peticio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/Peticio.xsd)
+[Aquí podeu veure la definició complerta de l'esquema Peticio.xsd](xsds/Peticio.xsd)
 
 ### Petició Crear Notificació
 
@@ -78,7 +78,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 </xs:element>
 ```
 
-[Aquí podeu veure la definició complerta de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioCrearNotificacio.xsd)
+[Aquí podeu veure la definició complerta de l'esquema PeticioCrearNotificacio.xsd](xsds/PeticioCrearNotificacio.xsd)
 
 #### Notificació
 
@@ -95,6 +95,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 | `DadesOfici` | dades ofici, opcional |
 | `DadesAvisos` | dades avisos, opcional |
 | `Documents` | llistat de documents de la notificació, màxim 100 documents |
+
 
 ```xml
 <xs:complexType name="NotificacioType">
@@ -176,6 +177,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 | `Destinatari/PersonaJuridica/PersonaVinculada/PrimerCognom` | primer cognom destinatari, string |
 | `Destinatari/PersonaJuridica/PersonaVinculada/SegonCognom` | segon cognom destinatari, string, opcional |
 
+
 ```xml
 <xs:complexType name="DestinatarisType">
 	<xs:sequence>
@@ -236,10 +238,12 @@ Conté un llistat de notificacions, que expliquem a continuació.
 ```
 
 #### DadesOfici
+
 | Camp | Descripció |
 | ---- | ---------- |
 | `DadesOfici/CosNotificacio` | cos notificació, string, opcional |
 | `DadesOfici/PeuRecurs` | peu recurs, string, opcional |
+
 
 ```xml
 <xs:element name="DadesOfici" minOccurs="0">
@@ -258,6 +262,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 | ---- | ---------- |
 | `DadesAvisos/PrimerAvis` | primer avis, boolean |
 | `DadesAvisos/RepeticioAvis` | repetició avis, boolean |
+
 
 ```xml
 <xs:element name="DadesAvisos" minOccurs="0">
@@ -279,6 +284,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 | `Documents/Document/DigestDocument` | digest del document, string en base 64, la mida es comproba segons l'algoritme |
 | `Documents/Document/DigestDocument /digestAlgorithm` | atribut (no element), algortime digest, valor: SHA-256, SHA-384, SHA-512 |
 | `Documents/Document/Tipus` | tipus de document,f valors possibles: Resolució, Annex |
+
 
 ```xml
 <xs:complexType name="DocumentsType">
@@ -304,7 +310,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 </xs:complexType>
 ```
 
-[Aquí podeu veure la definició complerta d'elements importats als esquemes: Commons.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/Commons.xsd)
+[Aquí podeu veure la definició complerta d'elements importats als esquemes: Commons.xsd](xsds/Commons.xsd)
 
 
 ### Petició Consultar Notificació
@@ -326,7 +332,7 @@ Conté un llistat de identificadors de notificació.
 </xs:element>
 ```
 
-[Aquí podeu veure la definició completa de l'esquema PeticioConsulta.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioConsulta.xsd)
+[Aquí podeu veure la definició completa de l'esquema PeticioConsulta.xsd](xsds/PeticioConsulta.xsd)
 
 ### Petició Cancelar Notificació
 
@@ -347,7 +353,7 @@ Conté un llistat de identificadors de notificació.
 </xs:element>
 ```
 
-[Aquí podeu veure la definició completa de l'esquema PeticioCancelar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioCancelar.xsd)
+[Aquí podeu veure la definició completa de l'esquema PeticioCancelar.xsd](xsds/PeticioCancelar.xsd)
 
 ### Petició Practicar Notificació
 
@@ -369,7 +375,7 @@ La seva definició es:
 </xs:element>
 ```
 
-[Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioPracticar.xsd)
+[Aquí podeu veure la definició completa de l'esquema PeticioPracticar.xsd](xsds/PeticioPracticar.xsd)
 
 Només es pot practicar una notificació en un dels següents estats `DIPOSITADA`,`ACCEPTADA` o `REBUTJADA`.
 
@@ -393,6 +399,7 @@ En cas que s'intenti practicar una notificació ja practicada anteriorment, la `
 | `DocumentPersonaJuridica/CIF` | cif, string, format validat |
 | `DocumentPersonaJuridica/VAT` | vat, string, format validat |
 | `DocumentPersonaJuridica/Identificador` | Identificador, string |
+
 
 ```xml
 <xs:complexType name="PracticarNotificacioType">
@@ -447,7 +454,7 @@ Exemple d'una resposta d'error:
 
 Els callbacks s'enviaran a l'emissor de les notificacions quan aquestes passin a l'estat Dipositada i quan passin a l'estat Expirada.
 
-L'esquema de les peticions de callback que generarà _eNotumLite_ cap al vostre sistema, i de les respostes que espera les podeu veure a la definició de [PeticioActualitzarEstat.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioActualitzarEstat.xsd) i [RespostaActualitzarEstat.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/RespostaActualitzarEstat.xsd) respecitvament.
+L'esquema de les peticions de callback que generarà _eNotumLite_ cap al vostre sistema, i de les respostes que espera les podeu veure a la definició de [PeticioActualitzarEstat.xsd](xsds/PeticioActualitzarEstat.xsd) i [RespostaActualitzarEstat.xsd](xsds/RespostaActualitzarEstat.xsd) respecitvament.
 
 Exemple d'un missatge de callback:
 
