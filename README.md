@@ -17,18 +17,21 @@ El `<CodigoProducto>` i el `<CodigoCertificado>` de la missatgeria genèrica de 
 * **NT-LITE**
 
 |IMPORTANT |
-|---- | 
+| -------- | 
 |**Recordeu que els entorns de DEV i PRE estan destinats únicament per a l’ús de proves** i que, d’acord amb el Supervisor Europeu de Protecció de Dades (EDPS), **en cap cas podem fer servir dades personals reals**. Així doncs, als entorns de DEV i PRE hem de fer servir exclusivament dades fictícies o creades artificialment. |
 |A l'hora de realitzar la vostra integració amb eNotumLite, tingueu present les recomanacions sobre **Protecció de Dades** recollides al document [La privacitat des del disseny i la privacitat per defecte - Guia per a desenvolupadors](https://www.apdcat.cat/content/dam/aem-apdcat/03-documentacio/documents/guiadesenvolupadors/GUIA-PDDD.pdf) de l'APDCAT. |
 
 
 ## Cicle de vida de les notificacions
+
 ![cicle de vida](imgs/estats-enotum-lite.png)
 
 ## Vida de les notificacions al sistema
+
 El temps de vida de les notificacions al sistema serà de 2 mesos, un cop passat aquest termini és purgarà la informació del sistema i és mantindrà la mateixa en format *.zip* durant un temps addicional per al integrador que la requereixi.
 
 ## Estat de les notificacions
+
 | Estat | Descripció | Estat previ |
 | ----- | ---------- | ----------- |
 | Entrada | Notificació introduïda al sistema mitjançant el servei de Crear Notificació. | Cap |
@@ -40,7 +43,9 @@ El temps de vida de les notificacions al sistema serà de 2 mesos, un cop passat
 | Descartada | Notificació cancel·lada mitjançant el servei de Cancel·lar Notificació. | Qualsevol |
 
 ## Modalitats de consum
+
 ### Petició
+
 Totes les modalitats de consum WS que ofereix **eNotumLite** extenen el següent esquema de petició:
 ```xml
 <xs:complexType name="PeticioType" abstract="true">
@@ -55,6 +60,7 @@ Per tant com és pot veure totes les peticions, a banda dels elements específic
 [Aquí podeu veure la definició complerta de l'esquema Peticio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/Peticio.xsd)
 
 ### Petició Crear Notificació
+
 Aquesta petició permet la creació de notificacions dins del sistema, fins a un màxim de 100 notificacions per petició.
 Conté un llistat de notificacions, que expliquem a continuació.
 
@@ -75,8 +81,9 @@ Conté un llistat de notificacions, que expliquem a continuació.
 [Aquí podeu veure la definició complerta de l'esquema PeticioCrearNotificacio.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioCrearNotificacio.xsd)
 
 #### Notificació
+
 | Camp | Descripció |
-| ----- | --------- |
+| ---- | ---------- |
 | `Titol` | titol de la notificació, 100 caracters com a màxim |
 | `Referencia` | referencia de la notificació, 100 caracters com a màxim |
 | `IdNotificacioEmissor` | id de la notificació de l'emissor, 50 caracters com a màxim, opcional |
@@ -139,6 +146,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 </xs:complexType>
 ```
 #### Destinataris
+
 | Camp | Descripció |
 | ---- | ---------- |
 | `Destinatari` | persona física o persona juridica (choice) |
@@ -245,6 +253,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 ```
 
 #### DadesAvisos
+
 | Camp | Descripció |
 | ---- | ---------- |
 | `DadesAvisos/PrimerAvis` | primer avis, boolean |
@@ -262,6 +271,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 ```
 
 #### Documents
+
 | Camp | Descripció |
 | ---- | ---------- |
 | `Documents/Document` | detalls de cada document, complex |
@@ -298,6 +308,7 @@ Conté un llistat de notificacions, que expliquem a continuació.
 
 
 ### Petició Consultar Notificació
+
 Aquesta petició facilita la consulta de notificacions, fins a un màxim de 100 notificacions per petició.
 Conté un llistat de identificadors de notificació.
 
@@ -318,6 +329,7 @@ Conté un llistat de identificadors de notificació.
 [Aquí podeu veure la definició completa de l'esquema PeticioConsulta.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioConsulta.xsd)
 
 ### Petició Cancelar Notificació
+
 Aquesta petició permet la cancelació de notificacions dins del sistema, fins a un màxim de 100 notificacions per petició.
 Conté un llistat de identificadors de notificació.
 
@@ -338,6 +350,7 @@ Conté un llistat de identificadors de notificació.
 [Aquí podeu veure la definició completa de l'esquema PeticioCancelar.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioCancelar.xsd)
 
 ### Petició Practicar Notificació
+
 Aquesta petició serveix per acceptar o rebutjar notificacions, fins a un màxim de 100 notificacions.
 Dispara la generació d'una evidencia signada.
 La seva definició es:
@@ -363,13 +376,14 @@ Només es pot practicar una notificació en un dels següents estats `DIPOSITADA
 En cas de practicar una notificació en estat: 
 
 * `DIPOSITADA` es generarà l'evidència de l'acció de practicar.
-* `ACCEPTADA`|`REBUTJADA` es tornarà l'evidència creada amb anterioritat.
+* `ACCEPTADA` o `REBUTJADA` es tornarà l'evidència creada amb anterioritat.
 
 En cas que s'intenti practicar una notificació ja practicada anteriorment, la `<Decisio>` informada ha de coincidir amb l'estat actual, sinó es retornarà un error indicant el problema.
 
 #### Practicar (PracticarNotificacioType)
+
 | Camp | Descripció |
-| ----- | ---------- |
+| ---- | ---------- |
 | `IdNotificacio` | id de la notificació a practicar, int |
 | `Decisio` | decisió del ciutadà, valors possibles: ACCEPTAR, REBUTJAR |
 | `DocumentPersonaFisica` | nif o passaport (choice) |
@@ -392,8 +406,9 @@ En cas que s'intenti practicar una notificació ja practicada anteriorment, la `
 ```
 
 ## Codis d'error
+
 | Codi   | Descripció |
-| -------| ---------- |
+| ------ | ---------- |
 | ERR_01 | La petició rebuda no coincideix amb el format definit a l'esquema XSD |
 | ERR_02 | Error no esperat pel sistema. En cas de rebre el missatge, contactar amb l'administrador de l'aplicació. Els logs del servidor mostren detalls específics de l'error genèric. |
 | NOT_01 | L'emissor no existeix a la base de dades. |
@@ -413,6 +428,7 @@ En cas que s'intenti practicar una notificació ja practicada anteriorment, la `
 | PRC_03 | La notificació esta en estat {estatNotificacio} i s'està intentant {decisioPracticar} |
 
 ## Resposta d'error
+
 Exemple d'una resposta d'error:
 ```xml
 <procesaResponse xmlns="http://www.openuri.org/" xmlns:ns0="http://gencat.net/scsp/esquemes/peticion">
@@ -428,11 +444,13 @@ Exemple d'una resposta d'error:
 ```
 
 ## Callbacks
+
 Els callbacks s'enviaran a l'emissor de les notificacions quan aquestes passin a l'estat Dipositada i quan passin a l'estat Expirada.
 
 L'esquema de les peticions de callback que generarà _eNotumLite_ cap al vostre sistema, i de les respostes que espera les podeu veure a la definició de [PeticioActualitzarEstat.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/PeticioActualitzarEstat.xsd) i [RespostaActualitzarEstat.xsd](https://github.com/ConsorciAOC/eNotumLite/blob/master/xsds/RespostaActualitzarEstat.xsd) respecitvament.
 
-Exemple d'un missatge de callback
+Exemple d'un missatge de callback:
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <ActualitzarEstat xmlns="http://www.aoc.cat/eNotum">
@@ -472,11 +490,12 @@ Exemple d'un missatge de callback
 </ActualitzarEstat>
 ```
 
-## Plantilles 
+## Plantilles
+
 La resolució de plantilles d'e-mail i SMS fa servir el motor [Mustache](https://github.com/spullara/mustache.java).
 
 Totes les dades de la notificació i destinatari estan disponibles per a mostrar-les a les plantilles.
-Codi d'exemple per tal d'accedir a les dades:
+Codi d'exemple per tal d'accedir a les dades: 
 ```
 Títol notificació: {{notificacio.titol}}
 Nom destinatari: {{destinatari.nom}}
