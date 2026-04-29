@@ -472,25 +472,24 @@ Exemple d'un missatge de callback
 ```
 
 ## Plantilles 
-La resolució de plantilles d'e-mail i SMS fa servir el motor Mustache:
-https://github.com/spullara/mustache.java#mustachejava-
+La resolució de plantilles d'e-mail i SMS fa servir el motor [Mustache](https://github.com/spullara/mustache.java).
 
 Totes les dades de la notificació i destinatari estan disponibles per a mostrar-les a les plantilles.
 Codi d'exemple per tal d'accedir a les dades:
-```
+```plaintext
 Títol notificació: {{notificacio.titol}}
 Nom destinatari: {{destinatari.nom}}
 ```
 
 Codi d'exemple per tal de recórrer llistats:
-``` 
+```plaintext
 {{#notificacio.documents}}
    Nom document: {{nom}}
 {{/notificacio.documents}}
 ```
 
 Codi d'exemple per condicionals:
-``` 
+```plaintext
 {{#destinatari.raoSocial}}
   Persona juridica
 {{/destinatari.raoSocial}}
@@ -501,33 +500,33 @@ Codi d'exemple per condicionals:
 
 | Descripció dada | Codi per accedir |
 | --------------- | -----------------|
-| Identificador de la notificació del emissor | {{notificacio.idNotificacioEmissor}} |
-| Referencia de la notificació | {{notificacio.referencia}} |
-| Títol de la notificació | {{notificacio.titol}} |
-| Dies d'expiració notificació | {{notificacio.diesExpiracio}} |
-| Idioma de la notificació | {{notificacio.idioma}} |
-| Cos de la notificació | {{notificacio.cosNotificacio}} |
-| Peu recurs de la notificació | {{notificacio.peuRecurs}} |
-| Tipus de notificació | {{notificacio.tipusNotificacio}} |
-| Estat de la notificació | {{notificacio.estat}} |
-| Enviar avis de la notificació | {{notificacio.enviarAvis}} |
-| Enviar recordatori de la notificació | {{notificacio.enviarRecordatori}} |
-| Data de creació de la notificació | {{notificacio.dataCreacio}} |
-| Data de dipòsit de la notificació | {{notificacio.dataDiposit}} |
-| Data de notificació practicada | {{notificacio.dataPracticar}} |
-| Codi de l'emissor de la notificació | {{notificacio.emissor.codi}} |
-| Descripció de l'emissor de la notificació | {{notificacio.emissor.descripcio}} |
-| Nom del document | {{#notificacio.documents}} {{nom}} {{/notificacio.documents}} |
-| Digest del document | {{#notificacio.documents}} {{digest}} {{/notificacio.documents}} |
-| Algoritme del document | {{#notificacio.documents}} {{digest}} {{/notificacio.documents}} |
-| Tipus de document | {{#notificacio.documents}} {{digest}} {{/notificacio.documents}} |
-| Idioma del destinatari de la notificació | {{#notificacio.destinataris}} {{idioma}} {{/notificacio.destinataris}} |
-| Telèfons del destinatari de la notificació | {{#notificacio.destinataris.telefons}} {{telefon}} {{/notificacio.destinataris.telefons}} |
-| Busties del destinatari de la notificació | {{#notificacio.destinataris.busties}} {{email}} {{/notificacio.destinataris.busties}} |
-| Destinatari ha practicat la notificació | {{#notificacio.destinataris.practicada}} {{practicada}} {{/notificacio.destinataris.practicada}} |
-| Evidencia de dipòsit de la notificació | {{notificacio.evidenciaDiposit.evidencia}} |
-| Evidencia de notificació practicada | {{notificacio.evidenciaPracticar.evidencia}} |
-| Idioma del destinatari | {{destinatari.idioma}} |
-| Telèfons del destinatari | {{#destinatari.telefons}} {{telefon}} {{/destinatari.telefons}} |
-| Busties del destinatari | {{#destinatari.busties}} {{email}} {{/destinatari.busties}} |
-| Destinatari ha practicat la notificació | {{destinatari.practicada}} |
+| Identificador de la notificació del emissor | `{{notificacio.idNotificacioEmissor}}` |
+| Referencia de la notificació | `{{notificacio.referencia}}` |
+| Títol de la notificació | `{{notificacio.titol}}` |
+| Dies d'expiració notificació | `{{notificacio.diesExpiracio}}` |
+| Idioma de la notificació | `{{notificacio.idioma}}` |
+| Cos de la notificació | `{{notificacio.cosNotificacio}}` |
+| Peu recurs de la notificació | `{{notificacio.peuRecurs}}` |
+| Tipus de notificació | `{{notificacio.tipusNotificacio}}` |
+| Estat de la notificació | `{{notificacio.estat}}` |
+| Enviar avis de la notificació | `{{notificacio.enviarAvis}}` |
+| Enviar recordatori de la notificació | `{{notificacio.enviarRecordatori}}` |
+| Data de creació de la notificació | `{{notificacio.dataCreacio}}` |
+| Data de dipòsit de la notificació | `{{notificacio.dataDiposit}}` |
+| Data de notificació practicada | `{{notificacio.dataPracticar}}` |
+| Codi de l'emissor de la notificació | `{{notificacio.emissor.codi}}` |
+| Descripció de l'emissor de la notificació | `{{notificacio.emissor.descripcio}}` |
+| Nom del document | `{{#notificacio.documents}} {{nom}} {{/notificacio.documents}}` |
+| Digest del document | `{{#notificacio.documents}} {{digest}} {{/notificacio.documents}}` |
+| Algoritme del document | `{{#notificacio.documents}} {{digest}} {{/notificacio.documents}}` |
+| Tipus de document | `{{#notificacio.documents}} {{digest}} {{/notificacio.documents}}` |
+| Idioma del destinatari de la notificació | `{{#notificacio.destinataris}} {{idioma}} {{/notificacio.destinataris}}` |
+| Telèfons del destinatari de la notificació | `{{#notificacio.destinataris.telefons}} {{telefon}} {{/notificacio.destinataris.telefons}}` |
+| Busties del destinatari de la notificació | `{{#notificacio.destinataris.busties}} {{email}} {{/notificacio.destinataris.busties}}` |
+| Destinatari ha practicat la notificació | `{{#notificacio.destinataris.practicada}} {{practicada}} {{/notificacio.destinataris.practicada}}` |
+| Evidencia de dipòsit de la notificació | `{{notificacio.evidenciaDiposit.evidencia}}` |
+| Evidencia de notificació practicada | `{{notificacio.evidenciaPracticar.evidencia}}` |
+| Idioma del destinatari | `{{destinatari.idioma}}` |
+| Telèfons del destinatari | `{{#destinatari.telefons}} {{telefon}} {{/destinatari.telefons}}` |
+| Busties del destinatari | `{{#destinatari.busties}} {{email}} {{/destinatari.busties}}` |
+| Destinatari ha practicat la notificació | `{{destinatari.practicada}}` |
